@@ -1,11 +1,15 @@
 <?php
-defined('ABSPATH') or die('Cheatin\' uh?');
+defined('ABSPATH') or die();
 /*
 MU Plugin: remove-wp-version
-Description: Hide Wordpress version
+Description: Remove wordpress version
 Author: Yann Kozon
 Author URI: http://www.yannkozon.com
 */
 
-add_filter('the_generator', '__return_empty_string');
-remove_action('wp_head', 'wp_generator');
+remove_action( 'wp_head', 'wp_generator' );
+
+function mu_remove_wp_version() {
+	return '';
+}
+add_filter( 'the_generator', 'mu_remove_wp_version' );

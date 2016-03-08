@@ -1,10 +1,10 @@
 <?php
-defined('ABSPATH') or die('Cheatin\' uh?');
+defined('ABSPATH') or die();
 /*
 MU Plugin: sanitize-file-name
-Description: Remove accents to upload file
+Description: Sanitize upload file name
 Author: Yann Kozon
 Author URI: http://www.yannkozon.com
 */
 
-add_filter('sanitize_file_name', 'remove_accents');
+add_filter( 'sanitize_file_name', 'remove_accents' );
