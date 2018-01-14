@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: single-search-redirect
 Description: Redirect to post if there is only one search result
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 function mu_single_search_redirect() {  

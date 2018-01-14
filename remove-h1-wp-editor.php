@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: remove-h1-wp-editor
 Description: Remove H1 in wp editor
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 function mu_remove_h1_wp_editor( $init ) {

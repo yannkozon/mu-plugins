@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: disable-autosave
 Description: Disable autosave
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 function mu_disable_autosave() {

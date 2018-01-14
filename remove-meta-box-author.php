@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: remove-meta-box-author
 Description: Remove meta box author in post and page
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 function mu_remove_meta_box_author() {

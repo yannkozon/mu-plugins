@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: remove-emoji-support
 Description: Remove emoji support
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );

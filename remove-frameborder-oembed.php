@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: remove-frameborder-oembed
 Description: Remove frameborder property oembed
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 function mu_remove_frameborder_oembed( $return, $data, $url ) {

@@ -1,13 +1,12 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: custom-login-page
 Description: Custom login page
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
-
-define( 'MU_CLP_BACKGROUND', null );
 
 function mu_clp_login_headerurl() {
     return home_url();
@@ -20,20 +19,9 @@ function mu_clp_login_headertitle() {
 add_filter( 'login_headertitle', 'mu_clp_login_headertitle' );
 
 function clp_login_message() {
-    return '<h2 class="login-title">' . __( 'Backstage', 'mu-custom-login-page' ) . '</h2>';
+    return '<h2 class="login-title">' . __( 'Administration', 'mu-custom-login-page' ) . '</h2>';
 }
 add_filter( 'login_message', 'clp_login_message' );
-
-function mu_clp_login_body_class( $classes ) {
-	if( MU_CLP_BACKGROUND == null ) {
-		$classes[] = 'clp-background-' . rand( 1, 5 );
-	} else {
-		$classes[] = 'clp-background-' . MU_CLP_BACKGROUND;
-	}
-	
-	return $classes;
-}
-add_filter( 'login_body_class', 'mu_clp_login_body_class' );
 
 function mu_clp_login_head() {
 	// Remove error shake effect

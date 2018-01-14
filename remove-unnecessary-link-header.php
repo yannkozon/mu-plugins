@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: remove-unnecessary-link-header
 Description: Remove unnecessary link in header
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 remove_action( 'wp_head', 'rsd_link' );

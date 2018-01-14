@@ -1,10 +1,11 @@
 <?php
 defined('ABSPATH') or die();
+
 /*
 MU Plugin: remove-recaptcha-frontend-itsec
 Description: Remove recaptcha in frontend theme if you use Google reCAPTCHA with iThemes security pro
 Author: Yann Kozon
-Author URI: http://www.yannkozon.com
+Author URI: https://www.yannkozon.com
 */
 
 function mu_remove_recaptcha_frontend_itsec() {
