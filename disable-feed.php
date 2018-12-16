@@ -17,5 +17,3 @@ add_action( 'do_feed_rdf', 'mu_disable_feed' );
 add_action( 'do_feed_rss', 'mu_disable_feed' );
 add_action( 'do_feed_rss2', 'mu_disable_feed' );
 add_action( 'do_feed_atom', 'mu_disable_feed' );
-add_action( 'do_feed_rss2_comments', 'mu_disable_feed' );
-add_action( 'do_feed_atom_comments', 'mu_disable_feed' );
