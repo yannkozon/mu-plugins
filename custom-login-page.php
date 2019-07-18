@@ -16,7 +16,7 @@ add_filter( 'login_headerurl', 'mu_clp_login_headerurl' );
 function mu_clp_login_headertitle() {
     return get_bloginfo( 'name' );
 }
-add_filter( 'login_headertitle', 'mu_clp_login_headertitle' );
+add_filter( 'login_header_text', 'mu_clp_login_headertitle' );
 
 function clp_login_message() {
     return '<h2 class="login-title">' . __( 'Administration', 'mu-custom-login-page' ) . '</h2>';
