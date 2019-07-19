@@ -13,10 +13,29 @@ function mu_clp_login_headerurl() {
 }
 add_filter( 'login_headerurl', 'mu_clp_login_headerurl' );
 
-function mu_clp_login_headertitle() {
-    return get_bloginfo( 'name' );
+function mu_clp_login_headertext() {
+	$logo = '';
+
+	if ( file_exists( get_stylesheet_directory() . '/images/logo.svg' ) ) {
+		$logo = file_get_contents( get_stylesheet_directory() . '/images/logo.svg' );
+	} elseif ( file_exists( WPMU_PLUGIN_DIR . '/custom-login-page/images/logo.svg' ) ) {
+		$logo = file_get_contents( WPMU_PLUGIN_DIR . '/custom-login-page/images/logo.svg' );
+	}
+
+    return $logo . '<span class="sr">' . get_bloginfo( 'name' ) . '</span>';
 }
-add_filter( 'login_header_text', 'mu_clp_login_headertitle' );
+add_filter( 'login_headertext', 'mu_clp_login_headertext' );
+
+function mu_clp_login_body_class( $classes ) {
+	if( isset( $_GET['dark-theme'] ) ) {
+		$classes[] = 'dark-theme';
+	} elseif( isset( $_GET['light-theme'] ) ) {
+		$classes[] = 'light-theme';
+	}
+
+	return $classes;
+}
+add_filter( 'login_body_class', 'mu_clp_login_body_class' );
 
 function clp_login_message() {
     return '<h2 class="login-title">' . __( 'Administration', 'mu-custom-login-page' ) . '</h2>';

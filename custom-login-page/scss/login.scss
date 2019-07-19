@@ -1,122 +1,278 @@
-﻿$color     : #384d72;
-$colorDark : #2c3c59;
+﻿$error-color     : #dc3232;
+$border-color    : #444;
+$primary-color   : #374d72;
+$secondary-color : #eee;
 
-html, body {
-	background : #efefef;
-	min-height : 100%;
-	height     : 100%;
+:root {
+	--bg-color               : #eee;
+	--header-color           : #374d72;
+	--text-color             : #181818;
+	--border-color           : transparent;
+	--input-border-color     : #ddd;
+	--login-color            : #fff;
+	--shadow-opacity         : 0.1;
+	--btn-hover-color        : #2a3b58;
+	--btn-border-hover-color : transparent;
 }
 
-body.login {
-	height:auto;
+::selection {
+	background-color: $primary-color;
+	color: $secondary-color;
+}
 
-	* {
-		box-sizing : border-box;
+* {
+	box-sizing: border-box;
+
+	&:before, &:after {
+		box-sizing: border-box;
+	}
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	50% { 
+		opacity: 1;
+
+	}
+	100% { 
+		opacity: 0;
+		transform: scale(3);
+	}
+}
+
+body {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+
+	background:  var(--bg-color);
+	color: var(--text-color);
+	display: flex;
+
+	&.light-theme {
+		--bg-color               : #eee;
+		--header-color           : #374d72;
+		--text-color             : #181818;
+		--border-color           : transparent;
+		--input-border-color     : #ddd;
+		--login-color            : #fff;
+		--shadow-opacity         : 0.1;
+		--btn-hover-color        : #2a3b58;
+		--btn-border-hover-color : transparent;
 	}
 
-	#login {
-		perspective : 65.0rem;
-		position    : relative;
-		max-width   : 22.0rem;
-		padding     : 5% 0;
-		width       : 100%;
+	&.dark-theme {
+		--bg-color               : #181818;
+		--header-color           : #181818;
+		--text-color             : #eee;
+		--border-color           : #444;
+		--input-border-color     : #444;
+		--login-color            : #181818;
+		--shadow-opacity         : 0.3;
+		--btn-hover-color        : #374d72;
+		--btn-border-hover-color : #eee;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		--bg-color               : #181818;
+		--header-color           : #181818;
+		--text-color             : #eee;
+		--border-color           : #444;
+		--input-border-color     : #444;
+		--login-color            : #181818;
+		--shadow-opacity         : 0.3;
+		--btn-hover-color        : #374d72;
+		--btn-border-hover-color : #eee;
+	}
+}
+
+.sr {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	position: absolute;
+	padding: 0;
+	width: 1px;
+}
+
+#login {
+	border-radius: 0.3125rem;
+	box-shadow: 0.625rem 0.625rem 0.625rem rgba(0, 0, 0, var( --shadow-opacity ));
+	margin: 5% auto auto auto;
+	max-width: 22.0rem;
+	position: relative;
+	padding: 0;
+	width: 100%;
+
+	.login &_error {
+		animation : blink 1.2s;
+		background: $error-color;
+		border: 0;
+		border-radius: 50%;
+		box-shadow: 0.625rem 0.625rem 0.625rem rgba(0, 0, 0, var( --shadow-opacity ));
+		display: block;
+		height: 4.0rem;
+		left: 50%;
+		margin: -2.0rem 0 0 -2.0rem;
+		opacity: 0;
+		padding: 0;
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		transform: scale(0);
+		width: 4.0rem;
+
+		&:before, &:after {
+			background: $secondary-color;
+			content:'';
+			display: block;
+			height: 0.5rem;
+			left: 20%;
+			position: absolute;
+			top: 40%;
+			width: 60%;
+		}
+
+		&:before {
+			transform: rotate(45deg);
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+		}
 	}
 
 	h1 {
-		box-sizing       : border-box;
-		padding          : 1.0rem;
-		background       : $color;
-		transition       : transform .4s;
-		transform-origin : 0 100%;
+		perspective: 65.0rem;
 
 		a {
-			background : url(../images/logo.svg) center center/contain no-repeat;
-			margin     : 0 auto;
-			width      : 100%;
-			height     : 4.0rem;
+			background: var(--header-color);
+			border: thin solid var(--border-color);
+			//border-bottom: 0;
+			border-radius: 0.3125rem 0.3125rem 0 0;
+			color: var(--text-color);
+			display: block;
+			height: 6.0rem;
+			padding: 1.0rem;
+			transition: all .4s;
+			transform-origin: 0 100%;
+			margin: 0 auto;
+			width: 100%;
+				
+			&:hover, &:focus {
+				transform: rotateX(-25deg);
+				box-shadow: 0 -0.625rem 0.625rem rgba(0, 0, 0, var( --shadow-opacity ));
+			}
+
+			&:focus {
+				outline: thin dashed var(--text-color);
+			}
 		}
 
-		&:hover {
-			transform : rotateX(-25deg);
-		}
-	}
+		svg {
+			display: block;
+			fill: $secondary-color;
+			height: 100%;
+			width: 100%;
 
-	form {
-		margin     : 0;
-		box-shadow : none;
-		padding    : 1.5rem;
-	}
-
-	a, #nav a {
-		color           : $color;
-		text-decoration : underline;
-
-		&:hover, &:focus {
-			color : $colorDark;
-		}
-
-		&:focus {
-			box-shadow : none;
-			outline    : thin dotted $color;
-		}
-	}
-
-	label {
-		font-size : .9rem;
-	}
-
-	input[type=text], input[type=password] {
-		text-shadow   : none;
-		box-shadow    : none;
-		border-radius : 0;
-		font-size     : 1.0rem;
-		padding       : .6rem;
-
-		&:focus {
-			box-shadow   : none;
-			border-color : $color;
+			g, path, rect, circle, polygon {
+				fill: $secondary-color;
+			}
 		}
 	}
 
 	.login-title {
-		padding     : 1.5rem 0 1.0rem 0;
-		background  : white;
-		text-align  : center;
-		font-weight : normal;
-		font-size   : 2.0rem;
+		background: var(--login-color);
+		color: var(--text-color);
+		border-left: thin solid var(--border-color);
+		border-right: thin solid var(--border-color);
+		font-size: 2.0rem;
+		font-weight: normal;
+		opacity: 0.9;
+		padding: 1.5rem 0 0.5rem 0;
+		text-align: center;
 	}
 
-	#login_error {
-		margin     : 0;
-		padding    : 1.5rem 1.5rem 0 1.5rem;
-		border     : 0;
-		box-shadow : none;
-	}
+	form {
+		background: var(--login-color);
+		border-left: thin solid var(--border-color);
+		border-right: thin solid var(--border-color);
+		box-shadow: none;
+		margin: 0;
+		padding: 1.5rem;
 
-	#wp-submit {
-		background    : $color;
-		text-shadow   : none;
-		box-shadow    : none;
-		border-radius : 0;
-		float         : none;
-		border        : 0;
-		padding       : .6rem 2.5rem;
-		height        : auto;
-		font-size     : 1.0rem;
-		width         : 100%;
-		transition    : background .4s;
+		label {
+			font-size: .9rem;
+		}
 
-		&:hover, &:focus {
-			background : $colorDark;
+		input {
+			background: var(--login-color);
+			border: thin solid var(--input-border-color);
+			box-shadow: none;
+			color: var(--text-color);
+			font-size: .9rem;
+			padding: .6rem;
+			text-shadow: none;
+			transition: border .4s;
+
+			&:hover, &:focus {
+				box-shadow: none;
+				border: thin solid var(--text-color);
+			}
+
+			&:focus {
+				outline: thin dashed var(--text-color);
+			}
 		}
 	}
 
-	#nav, &.mobile #login #nav {
-		margin     : 0;
-		padding    : 0 2.0rem 2.0rem 2.0rem;
-		background : white;
-		font       : .9rem;
-		text-align : center;
+	a, #nav a {
+		color: var(--text-color);
+		text-decoration: underline;
+
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+
+		&:focus {
+			box-shadow: none;
+			outline: thin dashed var(--text-color);
+		}
+	}
+
+	.button {
+		background: $primary-color;
+		color: $secondary-color;
+		text-shadow: none;
+		box-shadow: none;
+		float: none;
+		border-radius: 0.3125rem;
+		border: thin solid $primary-color;
+		padding: .6rem 2.5rem;
+		height: auto;
+		font-size: 1.0rem;
+		width: 100%;
+		transition: all .4s;
+		margin: 0.625rem 0 0 0;
+
+		&:hover, &:focus {
+			background: var(--btn-hover-color);
+			border: thin solid var(--btn-border-hover-color);
+		}
+	}
+
+	#nav {
+		background: var(--login-color);
+		border: thin solid var(--border-color);
+		border-radius: 0 0 0.3125rem 0.3125rem;
+		border-top: 0;
+		font-size: .9rem;
+		margin: 0;
+		padding: 0 2.0rem 2.0rem 2.0rem;
+		text-align: center;
 	}
 
 	#backtoblog, p.forgetmenot, .message {
