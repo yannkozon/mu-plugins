@@ -45,8 +45,14 @@ add_filter( 'login_message', 'clp_login_message' );
 function mu_clp_login_head() {
 	// Remove error shake effect
 	remove_action( 'login_head', 'wp_shake_js', 12 );
-
-	// Add custom login stylesheet
-	echo "<link rel='stylesheet' id='clp-style'  href='" . WPMU_PLUGIN_URL . "/custom-login-page/css/login.min.css?ver=1.0.0' type='text/css' media='all' />";
 }
-add_action('login_head', 'mu_clp_login_head');
+add_action( 'login_head', 'mu_clp_login_head' );
+
+function mu_clp_login_enqueue_style() {
+	wp_enqueue_style(
+        'mu-custom-login-page',
+        plugins_url( '/custom-login-page/css/login.min.css', WPMU_PLUGIN_DIR . '/./' ),
+        false
+    );
+}
+add_action( 'login_enqueue_scripts', 'mu_clp_login_enqueue_style');

@@ -258,6 +258,16 @@ body {
 		transition: all .4s;
 		margin: 0.625rem 0 0 0;
 
+		&[disabled] {
+		    background: $primary-color !important;
+		    border-color: $primary-color !important;
+		    box-shadow: none !important;
+			color: $secondary-color !important;
+		    cursor: default;
+		    opacity: 0.4;
+		    text-shadow: none !important;
+		}
+
 		&:hover, &:focus {
 			background: var(--btn-hover-color);
 			border: thin solid var(--btn-border-hover-color);
@@ -275,7 +285,68 @@ body {
 		text-align: center;
 	}
 
-	#backtoblog, p.forgetmenot, .message {
-		display : none;
+	#backtoblog, p.forgetmenot, .message, .privacy-policy-page-link {
+		display: none;
+	}
+}
+
+#resetpassform {
+	.password-input {
+		padding-right: calc( 2.5rem + .6rem );
+	}
+
+	.wp-hide-pw {
+		border-radius: 0;
+		margin-top: 0.062rem;
+		margin-right: 0.062rem;
+		height: calc( 100% - 0.125rem );
+		padding: 0.6rem 0;
+		width: 2.5rem;
+
+		& > .dashicons { 
+			top: -0.125rem;
+		}
+	}
+}
+
+#pass-strength-result {
+	color: #fff;
+
+	&.short {
+	    background-color: #a62a2a;
+	    border-color: #a62a2a;
+	}
+
+	&.bad {
+	    background-color: #b15e27;
+	    border-color: #b15e27;
+	}
+
+	&.good {
+	    background-color: #bd8020;
+	    border-color: #bd8020;
+	}
+
+	&.strong {
+		background-color: #298c58;
+		border-color: #298c58;
+	}
+}
+
+#pass1-text.strong, #pass1.strong {
+    &.short {
+	    border-color: #a62a2a;
+	}
+
+	&.bad {
+	    border-color: #b15e27;
+	}
+
+	&.good {
+	    border-color: #bd8020;
+	}
+
+	&.strong {
+		border-color: #298c58;
 	}
 }
