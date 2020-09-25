@@ -15,4 +15,4 @@ function mu_remove_wp_embed() {
 		wp_deregister_script( 'embed' );
 	}
 }
-add_action( 'init', 'mu_remove_wp_embed', 9999 );
+add_action( 'init', 'mu_remove_wp_embed', PHP_INT_MAX );
