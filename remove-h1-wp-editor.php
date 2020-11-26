@@ -16,8 +16,9 @@ add_filter( 'tiny_mce_before_init', 'mu_remove_h1_wp_editor' );
 
 function mu_remove_h1_gutenberg_editor() {
 	echo '<style>
-	#editor .components-button.components-toolbar__control[data-subscript="1"] {
+	#editor .block-library-heading-level-toolbar .components-toolbar-group button:first-child {
 		width: 3px;
+		min-width: auto;
 		padding: 3px 0;
 		pointer-events: none;
 		visibility: hidden;
